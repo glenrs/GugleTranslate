@@ -19,7 +19,9 @@ static PyObject* cgt_translate(PyObject *self, PyObject *args) {
     //Get user input and prepare to send it back to python
     char outMessage[100];
     PyObject *argList;
-    fgets(outMessage,100,stdin);
+    while(fgets(outMessage,100,stdin) == NULL) {
+        printf("What would you like translated to Python World?\n");
+    }
     
     //Get rid of the end of line character
     outMessage[strlen(outMessage)-1] = '\0';
@@ -34,15 +36,18 @@ static PyObject* cgt_translate(PyObject *self, PyObject *args) {
     return Py_None;
 }
 
+//This stores converts the names of the c functions to python function names.
 static PyMethodDef CGTMethods[] = {
     {"translate", cgt_translate, METH_VARARGS,"Accepts messages from python and then sends messages back to Python."},
     {NULL, NULL, 0, NULL}
 };
 
+//This is what actually builds the Python Module
 static PyModuleDef CGTModule = {
     PyModuleDef_HEAD_INIT, "GCT", NULL, -1, CGTMethods
 };
 
+//This will initialize the python module
 PyObject* PyInit_CGT(void) {
     Py_Initialize();
     return PyModule_Create(&CGTModule);

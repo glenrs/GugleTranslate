@@ -34,16 +34,19 @@ static PyObject* cgt_translate(PyObject *self, PyObject *args) {
     return Py_None;
 }
 
+//Sets function names in Python from C
 static PyMethodDef CGTMethods[] = {
     {"translate", cgt_translate, METH_VARARGS,"Accepts messages from python and then sends messages back to Python."},
     {NULL, NULL, 0, NULL}
 };
 
+//Generates Module
 static PyModuleDef CGTModule = {
     PyModuleDef_HEAD_INIT, "CGT", NULL, -1, CGTMethods,
     NULL, NULL, NULL, NULL
 };
 
+//Initialize C embedded Python module
 static PyObject* PyInit_cgt(void) {
     return PyModule_Create(&CGTModule);
 }
