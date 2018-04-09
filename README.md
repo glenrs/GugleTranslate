@@ -19,7 +19,7 @@ The docker image glenrs/gugletranslate has been developed for easy execution of 
 
 ```
 docker pull glenrs/gugletranslate
-docker run -it --rm --name gt glenrs/gugletranslate /bin/bash
+docker run -it --rm glenrs/gugletranslate /bin/bash
 ```
 
 The following three commands will allow for easy execution of the three implementations
