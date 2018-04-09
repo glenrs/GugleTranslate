@@ -22,7 +22,7 @@ docker pull glenrs/gugletranslate
 docker run -it --rm --name gt glenrs/gugletranslate /bin/bash
 ```
 
-The folling three commands will allow for easy execution of the three implementations
+The following three commands will allow for easy execution of the three implementations
 
 1. Embedded Python3.6 in C11
 
