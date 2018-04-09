@@ -1,17 +1,17 @@
 # GugleTranslate
 
-Gugle Translate has been designed to "translate" C and Python code. The process is designed to execute as described in the image below.
+Gugle Translate has been designed to "translate" C and Python code. There are some Python libraries such as Cython that help this functionality accross C and Python. Gugle Translate avoids using these libraries in order to allow for the most versatility. The process is designed to execute as described in the image below.
 
 ![Alt text](/image/prompt.png "Optional Title")
 
 ## Implementation
-Three implementations have been created since some complications arise in Python's limitations. These limitations arise when compiling the latest python3.6 and C11 versions. There are some Python libraries such as Cython that help this functionality accross C and Python. These implementations avoid using these libraries in order to allow for the most mutability. 
+Three implementations have been created since some complications arise in Python's limitations. These limitations occur when compiling the latest python3.6 and C11 versions. 
 
-1. Embedded Python3.6 in C11. This implementation starts in C11 code. It will ask for a message to send to python, and then transfer to Python. The Python code receives a callback function by argument and reports to the callback function after it finishes writing the message from C in Python code.
+1. Embedded Python3.6 in C11 (Language 1 is C11 and Language 2 is Python3.6). This accomplishes the task as described
 
-2. Extending Python3.6 with C99. Python is extended with basic python built in libraries. These functions use C99. Although there appears to be ways to update compilation to C11, when newer versions of Python3 are used, these functions default to C99.
+2. Extending Python3.6 with C99 (Language 1 is Python3.6 and Language 2 is C99). Extending Python uses functions that already exist in python. Although there appears to be ways to update compilation to C11, when newer versions of Python3 are used, these functions default to C99.
 
-3. Extending embedded Python3.6 in C11. This implementations allows for the most mutability possible. This allows the user to use the exact versions of C and Python. The downsight is this does not start in Python. C will start, but will then import a python script that will execute by calling C embedded modules in Python. 
+3. Extending embedded Python3.6 in C11 (Language 1 is Python3.6 and Language 2 is C11). This implementations allows for the most versatility possible. This implementation allows the user to use the exact versions of C and Python when compiling. The downsight is this does not "start" in Python. C will start, but will then import a python script that will execute. This script calls C embedded modules in Python. Python official documentation [Section 1.4](https://docs.python.org/3/extending/embedding.html) comments, "Simply forget for a while that the application starts the Python interpreter."
 
 ## Execution
 
