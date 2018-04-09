@@ -1,6 +1,6 @@
 # GugleTranslate
 
-Gugle Translate has been designed to "translate" C and Python code. The process is designed to execute as describe in the image below.
+Gugle Translate has been designed to "translate" C and Python code. The process is designed to execute as described in the image below.
 
 ![Alt text](/image/prompt.png "Optional Title")
 
