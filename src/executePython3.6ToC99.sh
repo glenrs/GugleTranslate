@@ -20,10 +20,10 @@ pySetup=setup.py
 ##
 
 ## This compiles the c code in C99 and builds and installs the module so that it can be executed in python
-python3 $pySetup build
-python3 $pySetup install 
+python3.6 $pySetup build
+python3.6 $pySetup install 
 
 ## The execution script
-python3 $pyScript
+python3.6 $pyScript
 
 
