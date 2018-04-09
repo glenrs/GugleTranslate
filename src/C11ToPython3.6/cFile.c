@@ -1,5 +1,7 @@
 #include <Python.h>
 
+//This entire module is generated for the Callback function
+//This is the callback function
 static PyObject* cgt_callback(PyObject *self, PyObject *args) {
     const char *message, *userName;
 
@@ -12,16 +14,19 @@ static PyObject* cgt_callback(PyObject *self, PyObject *args) {
     return Py_None;
 }
 
+//Sets function names c to python
 static PyMethodDef CGTMethods[] = {
     {"callback", cgt_callback, METH_VARARGS,"Accepts messages from python and then sends messages back to Python."},
     {NULL, NULL, 0, NULL}
 };
 
+//Generate module
 static PyModuleDef CGTModule = {
     PyModuleDef_HEAD_INIT, "CGT", NULL, -1, CGTMethods,
     NULL, NULL, NULL, NULL
 };
 
+//Initialize module
 static PyObject* PyInit_cgt(void) {
     return PyModule_Create(&CGTModule);
 }
@@ -42,17 +47,18 @@ int main(int argc, char *argv[]) {
 
     PyImport_AppendInittab("CGT", &PyInit_cgt);
     Py_Initialize();
-    pName = PyUnicode_DecodeFSDefault(argv[1]);
-    /* Error checking of pName left out */
 
+    //This reads the first argument which is the name of the python module
+    pName = PyUnicode_DecodeFSDefault(argv[1]);
     pModule = PyImport_Import(pName);
 
     Py_DECREF(pName);
 
     if (pModule != NULL) {
+        //The function is stored in the second argument
         pFunc = PyObject_GetAttrString(pModule, argv[2]);
         if (pFunc && PyCallable_Check(pFunc)) {
-            
+            // "CGT" is the name of the module created and "callback" is the callback function name
             pArgs = Py_BuildValue("ssss",name,"CGT","callback",message);
 
             pValue = PyObject_CallObject(pFunc, pArgs);
