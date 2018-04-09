@@ -15,7 +15,7 @@ Three implementations have been created since some complications arise in Python
 
 ## Execution
 
-The docker container glenrs/gugletranslate has been developed for easy execution of the three implementations. Please run the docker container in interactive mode in order to choose which implementation to run. (code below)
+The docker image glenrs/gugletranslate has been developed for easy execution of the three implementations. Please run the docker container in interactive mode in order to choose which implementation to run. (code below)
 
 ```
 docker pull glenrs/gugletranslate
